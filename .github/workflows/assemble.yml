@@ -1,0 +1,56 @@
+name: Assemble full piece from earlier runs
+
+# Use this only if a movement had to be re-run in a separate run (e.g. it stopped at the time limit).
+# Paste the run numbers (IDs from the run page URL: .../actions/runs/<ID>) of every run holding movie parts.
+
+on:
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: "Run IDs, separated by spaces"
+        required: true
+      grid:
+        description: "Size the movements were rendered at"
+        default: "1800"
+      upscale_3600:
+        description: "Also make a 3600 x 3600 upscaled copy"
+        type: boolean
+        default: false
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache && df -h /
+      - name: Download movement movies
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for id in ${{ inputs.runs }}; do
+            gh run download "$id" -R "${{ github.repository }}" -p "OOM_*_${{ inputs.grid }}_from*" -D "movements/$id"
+          done
+          find movements -name "*.mp4" -exec ls -la {} \;
+      - name: Join the movements into the full piece
+        run: python3 assemble.py movements "OrdersOfMagnitude_II-VII_${{ inputs.grid }}.mp4"
+      - name: 3600 upscale
+        if: ${{ inputs.upscale_3600 }}
+        run: |
+          rm -rf movements
+          ffmpeg -y -hide_banner -loglevel error -stats -i "OrdersOfMagnitude_II-VII_${{ inputs.grid }}.mp4" \
+            -vf scale=3600:3600:flags=lanczos -c:v libx264 -preset medium -crf 17 -pix_fmt yuv420p \
+            -profile:v high -movflags +faststart "OrdersOfMagnitude_II-VII_3600.mp4"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OrdersOfMagnitude_FULL
+          path: OrdersOfMagnitude_*.mp4
+          compression-level: 0
+          retention-days: 30
