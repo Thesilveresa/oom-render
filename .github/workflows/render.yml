@@ -1,0 +1,91 @@
+name: Render Orders of Magnitude
+
+on:
+  workflow_dispatch:
+    inputs:
+      movements:
+        description: "Movements to render (comma separated)"
+        default: "II,III,IV,V,VI,VII"
+      grid:
+        description: "Render size (pixels square)"
+        default: "1800"
+      from_frame:
+        description: "Only for re-running ONE movement that stopped early: frame to continue from"
+        default: "0"
+      upscale_3600:
+        description: "Also make a 3600 x 3600 upscaled copy of the full piece"
+        type: boolean
+        default: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      list: ${{ steps.m.outputs.list }}
+    steps:
+      - id: m
+        run: echo "list=$(echo '${{ inputs.movements }}' | python3 -c "import sys,json;print(json.dumps([m.strip() for m in sys.stdin.read().split(',') if m.strip()]))")" >> "$GITHUB_OUTPUT"
+
+  render:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    strategy:
+      fail-fast: false
+      matrix:
+        movement: ${{ fromJSON(needs.setup.outputs.list) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL && df -h /
+      - name: Render Movement ${{ matrix.movement }}
+        env:
+          GRID: ${{ inputs.grid }}
+          HEAP: 12g
+          FROM: ${{ inputs.from_frame }}
+          LIMIT: "340"
+        run: bash render.sh ${{ matrix.movement }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: OOM_${{ matrix.movement }}_${{ inputs.grid }}_from${{ inputs.from_frame }}
+          path: out/*.mp4
+          compression-level: 0
+          retention-days: 30
+
+  assemble:
+    needs: render
+    if: ${{ always() && inputs.movements == 'II,III,IV,V,VI,VII' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache && df -h /
+      - uses: actions/download-artifact@v4
+        with:
+          path: movements
+          pattern: OOM_*_${{ inputs.grid }}_from*
+      - name: Join the movements into the full piece
+        run: python3 assemble.py movements "OrdersOfMagnitude_II-VII_${{ inputs.grid }}.mp4"
+      - name: 3600 upscale
+        if: ${{ inputs.upscale_3600 }}
+        run: |
+          rm -rf movements
+          ffmpeg -y -hide_banner -loglevel error -stats -i "OrdersOfMagnitude_II-VII_${{ inputs.grid }}.mp4" \
+            -vf scale=3600:3600:flags=lanczos -c:v libx264 -preset medium -crf 17 -pix_fmt yuv420p \
+            -profile:v high -movflags +faststart "OrdersOfMagnitude_II-VII_3600.mp4"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OrdersOfMagnitude_FULL
+          path: OrdersOfMagnitude_*.mp4
+          compression-level: 0
+          retention-days: 30
