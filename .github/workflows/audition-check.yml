@@ -1,0 +1,38 @@
+name: Audition check
+
+on:
+  push:
+    branches: [audition-check]
+    paths: ["check/go"]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg python3-pil
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache && df -h /
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Audition_Reel_*
+          path: reels
+          run-id: 44784659528
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Decode-check reels and make sheets
+        run: |
+          ls -laR reels
+          for r in reels/*/*.mp4; do echo "$r"; ffprobe -v error -show_entries format=duration:stream=width,height,nb_frames -of compact "$r"; done
+          ffmpeg -v error -i reels/Audition_Reel_900/Audition_Reel_900.mp4 -f null - && echo "900 decodes clean"
+          python3 check/sheet.py reels/Audition_Reel_900/Audition_Reel_900.mp4 reels/Audition_Reel_900/Audition_Reel_900_chapters.txt reels/Audition_Reel_1800/Audition_Reel_1800.mp4
+          cp reels/Audition_Reel_900/Audition_Reel_900_chapters.txt check/out/chapters.txt
+      - name: Commit sheets
+        run: |
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add check/out && git commit -m "Audition check sheets" && git push
