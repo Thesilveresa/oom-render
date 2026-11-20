@@ -1,0 +1,99 @@
+name: Audition renders
+
+on:
+  push:
+    branches: [audition]
+    paths: ["audition/**", ".github/workflows/audition.yml"]
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these candidates (comma separated slugs); empty = all"
+        default: ""
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      list: ${{ steps.m.outputs.list }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          only = [s.strip() for s in "${{ inputs.only }}".split(',') if s.strip()]
+          slugs = [c['slug'] for c in json.load(open('audition/candidates.json')) if not only or c['slug'] in only]
+          print('list=' + json.dumps(slugs))
+          PY
+
+  render:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        slug: ${{ fromJSON(needs.setup.outputs.list) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - name: Render ${{ matrix.slug }}
+        env:
+          GRID: "1800"
+          HEAP: 12g
+        run: bash audition/render_one.sh "${{ matrix.slug }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: clip_${{ matrix.slug }}
+          path: audition/out/*.mp4
+          compression-level: 0
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seg_${{ matrix.slug }}
+          path: audition/seg/*.mp4
+          compression-level: 0
+          retention-days: 7
+
+  reel:
+    needs: render
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache && df -h /
+      - uses: actions/download-artifact@v4
+        with:
+          path: segs
+          pattern: seg_*
+      - name: Join the reels
+        working-directory: audition
+        run: |
+          python3 reel.py ../segs 900 ../Audition_Reel_900.mp4
+          python3 reel.py ../segs full ../Audition_Reel_1800.mp4
+          ls -la ..
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Audition_Reel_900
+          path: |
+            Audition_Reel_900.mp4
+            Audition_Reel_900_chapters.txt
+          compression-level: 0
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Audition_Reel_1800
+          path: |
+            Audition_Reel_1800.mp4
+            Audition_Reel_1800_chapters.txt
+          compression-level: 0
+          retention-days: 30

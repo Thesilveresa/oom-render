@@ -1,0 +1,247 @@
+[
+ {
+  "slug": "01_Liquid_x_Ferro2",
+  "file": "Liquid_x_Ferro2.lxp",
+  "same_as": [
+   "Liquid_x_Ferro.lxp"
+  ]
+ },
+ {
+  "slug": "02_Liquid_x_Ferro3",
+  "file": "Liquid_x_Ferro3.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "03_Liquid_x_Ferro3=4",
+  "file": "Liquid_x_Ferro3=4.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "04_LxF6_LiquidShimmer",
+  "file": "LxF6_LiquidShimmer.lxp",
+  "same_as": [
+   "Liquid_x_Ferro5.lxp"
+  ]
+ },
+ {
+  "slug": "05_LxF7",
+  "file": "LxF7.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "06_LxF8_WoahSparkle",
+  "file": "LxF8_WoahSparkle.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "07_LxF9",
+  "file": "LxF9.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "08_LxF10",
+  "file": "LxF10.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "09_LxF11_GlobalsOff",
+  "file": "LxF11_GlobalsOff.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "10_LxF13",
+  "file": "LxF13.lxp",
+  "same_as": [
+   "LxF12.lxp"
+  ]
+ },
+ {
+  "slug": "11_LxF14_RenderMe",
+  "file": "LxF14_RenderMe.lxp",
+  "same_as": [
+   "LxF14.lxp"
+  ]
+ },
+ {
+  "slug": "12_LxF15",
+  "file": "LxF15.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "13_LxF16_RENDERME",
+  "file": "LxF16_RENDERME.lxp",
+  "same_as": [
+   "LxF16.lxp"
+  ]
+ },
+ {
+  "slug": "14_LxF17",
+  "file": "LxF17.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "15_LxF17_NO_RENDERME",
+  "file": "LxF17_NO RENDERME.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "16_LxF19",
+  "file": "LxF19.lxp",
+  "same_as": [
+   "LxF18.lxp",
+   "LxF18_WOW Yes.lxp"
+  ]
+ },
+ {
+  "slug": "17_LxF20",
+  "file": "LxF20.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "18_LxF21",
+  "file": "LxF21.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "19_LxF22",
+  "file": "LxF22.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "20_LxF22_Rrrrender",
+  "file": "LxF22_Rrrrender.lxp",
+  "same_as": [
+   "LxF23.lxp"
+  ]
+ },
+ {
+  "slug": "21_LxF24",
+  "file": "LxF24.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "22_LL_PP",
+  "file": "LL_PP.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "23_LL_BoldColors",
+  "file": "LL_BoldColors.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "24_FF_BW",
+  "file": "FF_BW.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "25_FF_PP",
+  "file": "FF_PP.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "26_FF_PP_Plain",
+  "file": "FF_PP Plain.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "27_FF_PR_Plain",
+  "file": "FF_PR Plain.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "28_FF_PR",
+  "file": "FF_PR.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "29_FF_PR_x_BW",
+  "file": "FF_PR x BW.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "30_FFxFF_Sparkle",
+  "file": "FFxFF_Sparkle.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "31_FF25",
+  "file": "FF25.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "32_FF26",
+  "file": "FF26.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "33_FF27",
+  "file": "FF27.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "34_FF28",
+  "file": "FF28.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "35_FF29",
+  "file": "FF29.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "36_FF30",
+  "file": "FF30.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "37_FF31",
+  "file": "FF31.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "38_FF32",
+  "file": "FF32.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "39_FF33",
+  "file": "FF33.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "40_FF34",
+  "file": "FF34.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "41_FF35",
+  "file": "FF35.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "42_FF36",
+  "file": "FF36.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "43_FF37",
+  "file": "FF37.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "44_FF38",
+  "file": "FF38.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "45_FF39",
+  "file": "FF39.lxp",
+  "same_as": []
+ },
+ {
+  "slug": "46_FF40",
+  "file": "FF40.lxp",
+  "same_as": []
+ }
+]
