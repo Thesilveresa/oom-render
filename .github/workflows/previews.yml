@@ -1,0 +1,78 @@
+name: Review previews (1800)
+
+# Runs on every push to the "previews" branch. Renders short clips at the review moments listed in
+# previews/run.json, with each jar named there (previews/<jar>.jar), all in parallel.
+# Download "previews_all" from the run page for every clip and still in one zip.
+
+on:
+  push:
+    branches: [previews]
+    paths: ["previews/**", ".github/workflows/previews.yml"]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      list: ${{ steps.m.outputs.list }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          run = json.load(open('previews/run.json'))
+          moms = {m['id']: m for m in json.load(open('previews/moments.json'))}
+          ids = run.get('moments') or list(moms)
+          jobs = [dict(moms[i], jar=j, grid=run.get('grid', 1800)) for i in ids for j in run['jars']]
+          print('list=' + json.dumps(jobs))
+          PY
+
+  render:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        job: ${{ fromJSON(needs.setup.outputs.list) }}
+    name: ${{ matrix.job.id }} ${{ matrix.job.jar }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Render ${{ matrix.job.id }} (${{ matrix.job.label }}) with ${{ matrix.job.jar }}
+        run: |
+          M=${{ matrix.job.movement }}; T=${{ matrix.job.t }}; WARM=${{ matrix.job.warm }}; G=${{ matrix.job.grid }}
+          read -r REC START END < <(python3 -c "
+          import json; w=json.load(open('windows.json'))['$M']; rec=w['record']+2*$T
+          print(rec, rec-round(2*$WARM*15)/15.0, rec+4)")
+          mkdir -p out
+          N="${{ matrix.job.id }}_${{ matrix.job.jar }}_${G}"
+          java -Xmx12g -jar "previews/${{ matrix.job.jar }}.jar" \
+            --project project/OOM2D_Revised.lxp --automation "automation/m${M}_automation.json" \
+            --start "$START" --record "$REC" --end "$END" \
+            --grid "$G" --sim 165 --size "$G" --fps 30 --crf 14 --no-skip --video "out/$N.mp4"
+          while pgrep -x ffmpeg >/dev/null; do sleep 2; done
+          ffmpeg -v error -y -ss 1.0 -i "out/$N.mp4" -frames:v 1 "out/$N.png"
+          ls -la out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: P_${{ matrix.job.id }}_${{ matrix.job.jar }}
+          path: out/*
+          compression-level: 0
+          retention-days: 14
+
+  bundle:
+    needs: render
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/upload-artifact/merge@v4
+        with:
+          name: previews_all
+          pattern: P_*
+          retention-days: 14

@@ -1,0 +1,86 @@
+[
+ {
+  "id": "V_020",
+  "movement": "V",
+  "t": 20,
+  "warm": 14,
+  "label": "Murmuration"
+ },
+ {
+  "id": "V_045",
+  "movement": "V",
+  "t": 45,
+  "warm": 10,
+  "label": "Stigmergic Trace"
+ },
+ {
+  "id": "V_120",
+  "movement": "V",
+  "t": 120,
+  "warm": 10,
+  "label": "City Crystal"
+ },
+ {
+  "id": "V_170",
+  "movement": "V",
+  "t": 170,
+  "warm": 32,
+  "label": "Data Topology"
+ },
+ {
+  "id": "V_100",
+  "movement": "V",
+  "t": 100,
+  "warm": 16,
+  "label": "City Crystal"
+ },
+ {
+  "id": "VI_200",
+  "movement": "VI",
+  "t": 200,
+  "warm": 10,
+  "label": "Stellar Nursery nebula"
+ },
+ {
+  "id": "VI_265",
+  "movement": "VI",
+  "t": 265,
+  "warm": 14,
+  "label": "Cataclysm"
+ },
+ {
+  "id": "III_104",
+  "movement": "III",
+  "t": 104,
+  "warm": 38,
+  "label": "Wet Geometry 3 (sparkle density)"
+ },
+ {
+  "id": "III_148",
+  "movement": "III",
+  "t": 148,
+  "warm": 82,
+  "label": "Wet Geometry 3 + back WG"
+ },
+ {
+  "id": "VI_100",
+  "movement": "VI",
+  "t": 100,
+  "warm": 12,
+  "label": "Planetary Ring (proto-planet)"
+ },
+ {
+  "id": "IV_095",
+  "movement": "IV",
+  "t": 95,
+  "warm": 14,
+  "label": "River Delta"
+ },
+ {
+  "id": "V_008",
+  "movement": "V",
+  "t": 8,
+  "warm": 7,
+  "label": "Murmuration (subdued)"
+ }
+]
