@@ -1,16 +1,11 @@
 {
  "grid": 1800,
  "moments": [
-  "IV_f0",
-  "IV_f1",
-  "IV_f2",
-  "IV_f3",
-  "V_f0",
-  "V_f1",
-  "V_f2",
-  "V_f3"
+  "IV_084",
+  "IV_110"
  ],
  "jars": [
+  "before",
   "after"
  ]
 }
