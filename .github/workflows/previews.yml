@@ -33,6 +33,8 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     timeout-minutes: 180
+    permissions:
+      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -61,6 +63,22 @@ jobs:
           while pgrep -x ffmpeg >/dev/null; do sleep 2; done
           ffmpeg -v error -y -ss 1.0 -i "out/$N.mp4" -frames:v 1 "out/$N.png"
           ls -la out
+      - name: Post this still to the preview-results branch (JPEG, as soon as it is ready)
+        run: |
+          N="${{ matrix.job.id }}_${{ matrix.job.name }}_${{ matrix.job.grid }}"
+          ffmpeg -v error -y -i "out/$N.png" -q:v 2 "/tmp/$N.jpg"
+          URL="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            rm -rf /tmp/res
+            if ! git clone -q --depth 1 --branch preview-results "$URL" /tmp/res 2>/dev/null; then
+              mkdir -p /tmp/res && git -C /tmp/res init -q && git -C /tmp/res checkout -q -b preview-results
+            fi
+            mkdir -p "/tmp/res/${{ github.run_id }}" && cp "/tmp/$N.jpg" "/tmp/res/${{ github.run_id }}/"
+            git -C /tmp/res add -A
+            git -C /tmp/res -c user.name="preview bot" -c user.email="actions@github.com" commit -q -m "$N (run ${{ github.run_id }})"
+            git -C /tmp/res push -q "$URL" preview-results && break
+            sleep $((RANDOM % 15 + 5))
+          done
       - uses: actions/upload-artifact@v4
         with:
           name: P_${{ matrix.job.id }}_${{ matrix.job.name }}
@@ -72,23 +90,9 @@ jobs:
     needs: render
     if: always()
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/upload-artifact/merge@v4
         with:
           name: previews_all
           pattern: P_*
           retention-days: 14
-      - uses: actions/download-artifact@v4
-        with:
-          name: previews_all
-          path: all
-      - name: Publish stills to the preview-results branch (JPEG, for quick checking)
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          mkdir -p res && for f in all/*.png; do ffmpeg -v error -y -i "$f" -q:v 2 "res/$(basename "${f%.png}").jpg"; done
-          cd res && git init -q && git checkout -q -b preview-results
-          echo "Stills from run ${{ github.run_id }} (commit ${{ github.sha }})" > README.md
-          git add -A && git -c user.name="preview bot" -c user.email="actions@github.com" commit -q -m "stills from run ${{ github.run_id }}"
-          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" preview-results
