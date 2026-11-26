@@ -1,1 +1,4 @@
-{"jars": ["before", "after"], "grid": 1800, "moments": []}
+{"grid": 1800, "moments": [],
+ "jars": ["before", "after",
+          {"name": "stigA_bright", "jar": "after", "props": "-Drb.stig=0", "only": ["V_045"]},
+          {"name": "stigC_smoky", "jar": "after", "props": "-Drb.stig=2", "only": ["V_045"]}]}
