@@ -1,12 +1,18 @@
 {
  "grid": 1800,
  "moments": [
-  "VI_265",
-  "VI_100",
-  "VI_200",
-  "IV_110"
+  "IV_074c",
+  "IV_084c",
+  "IV_094c",
+  "IV_104c"
  ],
  "jars": [
-  "after"
+  "after",
+  {
+   "name": "rd_mist60",
+   "jar": "after",
+   "props": "-Drb.rdmist=0.6"
+  },
+  "before"
  ]
 }

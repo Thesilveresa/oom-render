@@ -92,6 +92,7 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/upload-artifact/merge@v4
         with:
           name: previews_all
