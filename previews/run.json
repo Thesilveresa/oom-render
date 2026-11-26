@@ -1,4 +1,35 @@
-{"grid": 1800, "moments": [],
- "jars": ["before", "after",
-          {"name": "stigA_bright", "jar": "after", "props": "-Drb.stig=0", "only": ["V_045"]},
-          {"name": "stigC_smoky", "jar": "after", "props": "-Drb.stig=2", "only": ["V_045"]}]}
+{
+ "grid": 1800,
+ "moments": [
+  "V_008",
+  "V_020",
+  "V_045",
+  "V_100",
+  "V_120",
+  "V_170",
+  "VI_100",
+  "VI_200",
+  "VI_265",
+  "IV_095"
+ ],
+ "jars": [
+  "before",
+  "after",
+  {
+   "name": "stigA_bright",
+   "jar": "after",
+   "props": "-Drb.stig=0",
+   "only": [
+    "V_045"
+   ]
+  },
+  {
+   "name": "stigC_smoky",
+   "jar": "after",
+   "props": "-Drb.stig=2",
+   "only": [
+    "V_045"
+   ]
+  }
+ ]
+}
