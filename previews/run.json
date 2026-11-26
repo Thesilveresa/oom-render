@@ -1,11 +1,19 @@
 {
  "grid": 1800,
  "moments": [
-  "IV_084",
-  "IV_110"
+  "V_045",
+  "V_100"
  ],
  "jars": [
   "before",
-  "after"
+  "after",
+  {
+   "name": "stigA_bright",
+   "jar": "after",
+   "props": "-Drb.stig=0",
+   "only": [
+    "V_045"
+   ]
+  }
  ]
 }
