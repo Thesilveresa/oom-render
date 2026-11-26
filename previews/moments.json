@@ -153,5 +153,77 @@
   "dur": 8,
   "label": "River Delta passage",
   "group": "IV_RiverDelta_074-112"
+ },
+ {
+  "id": "IV_f0",
+  "movement": "IV",
+  "t": 0.0,
+  "warm": 0.5,
+  "dur": 48.72,
+  "label": "Movement IV full",
+  "group": "IV_full"
+ },
+ {
+  "id": "IV_f1",
+  "movement": "IV",
+  "t": 48.72,
+  "warm": 8,
+  "dur": 48.72,
+  "label": "Movement IV full",
+  "group": "IV_full"
+ },
+ {
+  "id": "IV_f2",
+  "movement": "IV",
+  "t": 97.45,
+  "warm": 8,
+  "dur": 48.72,
+  "label": "Movement IV full",
+  "group": "IV_full"
+ },
+ {
+  "id": "IV_f3",
+  "movement": "IV",
+  "t": 146.17,
+  "warm": 8,
+  "dur": 48.72,
+  "label": "Movement IV full",
+  "group": "IV_full"
+ },
+ {
+  "id": "V_f0",
+  "movement": "V",
+  "t": 0.0,
+  "warm": 0.5,
+  "dur": 46.13,
+  "label": "Movement V full",
+  "group": "V_full"
+ },
+ {
+  "id": "V_f1",
+  "movement": "V",
+  "t": 46.13,
+  "warm": 8,
+  "dur": 46.13,
+  "label": "Movement V full",
+  "group": "V_full"
+ },
+ {
+  "id": "V_f2",
+  "movement": "V",
+  "t": 92.26,
+  "warm": 8,
+  "dur": 46.13,
+  "label": "Movement V full",
+  "group": "V_full"
+ },
+ {
+  "id": "V_f3",
+  "movement": "V",
+  "t": 138.39,
+  "warm": 8,
+  "dur": 46.12,
+  "label": "Movement V full",
+  "group": "V_full"
  }
 ]
