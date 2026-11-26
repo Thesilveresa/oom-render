@@ -1,19 +1,28 @@
 {
  "grid": 1800,
  "moments": [
-  "V_045",
-  "V_100"
+  "IV_f0",
+  "IV_f1",
+  "IV_f2",
+  "IV_f3",
+  "V_f0",
+  "V_f1",
+  "V_f2",
+  "V_f3",
+  "VI_f0",
+  "VI_f1",
+  "VI_f2",
+  "VI_f3",
+  "VI_f4",
+  "VI_f5",
+  "VI_f6",
+  "VII_f0",
+  "VII_f1",
+  "VII_f2",
+  "VII_f3",
+  "VII_f4"
  ],
  "jars": [
-  "before",
-  "after",
-  {
-   "name": "stigA_bright",
-   "jar": "after",
-   "props": "-Drb.stig=0",
-   "only": [
-    "V_045"
-   ]
-  }
+  "after"
  ]
 }
