@@ -8,19 +8,29 @@
   "IV_110",
   "IV_184",
   "V_020",
-  "V_045"
+  "V_045",
+  "VI_200"
  ],
  "jars": [
   "before",
   "after",
   {
+   "name": "rd_mist60",
+   "jar": "after",
+   "props": "-Drb.rdmist=0.6",
+   "only": [
+    "IV_095",
+    "IV_103",
+    "IV_110",
+    "IV_184"
+   ]
+  },
+  {
    "name": "rd_dim",
    "jar": "after",
    "props": "-Drb.rdbri=0.7",
    "only": [
-    "IV_088",
     "IV_095",
-    "IV_103",
     "IV_110"
    ]
   },
@@ -30,7 +40,7 @@
    "props": "-Drb.rdmist=0",
    "only": [
     "IV_095",
-    "IV_103"
+    "IV_110"
    ]
   }
  ]
