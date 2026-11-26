@@ -51,9 +51,10 @@ jobs:
       - name: Render ${{ matrix.job.id }} (${{ matrix.job.label }}) - ${{ matrix.job.name }}
         run: |
           M=${{ matrix.job.movement }}; T=${{ matrix.job.t }}; WARM=${{ matrix.job.warm }}; G=${{ matrix.job.grid }}
+          DUR=${{ matrix.job.dur || 2 }}
           read -r REC START END < <(python3 -c "
           import json; w=json.load(open('windows.json'))['$M']; rec=w['record']+2*$T
-          print(rec, rec-round(2*$WARM*15)/15.0, rec+4)")
+          print(rec, rec-round(2*$WARM*15)/15.0, rec+2*$DUR)")
           mkdir -p out
           N="${{ matrix.job.id }}_${{ matrix.job.name }}_${G}"
           java ${{ matrix.job.props }} -Xmx12g -jar "previews/${{ matrix.job.jar }}.jar" \
@@ -96,3 +97,35 @@ jobs:
           name: previews_all
           pattern: P_*
           retention-days: 14
+      - uses: actions/download-artifact@v4
+        with:
+          name: previews_all
+          path: all
+      - name: Stitch chunked passages into one clip per variant
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          mkdir -p stitched
+          python3 - <<'PY'
+          import json, glob, os, subprocess, collections
+          moms = {m['id']: m for m in json.load(open('previews/moments.json'))}
+          groups = collections.defaultdict(list)
+          for f in sorted(glob.glob('all/*.mp4')):
+              b = os.path.basename(f)
+              mid = '_'.join(b.split('_')[:2]); rest = b[len(mid) + 1:-len('_1800.mp4')]
+              g = moms.get(mid, {}).get('group')
+              if g: groups[(g, rest)].append((moms[mid]['t'], f))
+          for (g, name), parts in groups.items():
+              parts.sort()
+              with open('list.txt', 'w') as L:
+                  for _, f in parts: L.write(f"file '{os.path.abspath(f)}'\n")
+              subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', 'list.txt', '-c', 'copy',
+                              f'stitched/{g}_{name}_1800.mp4'], check=True)
+          PY
+          ls -la stitched
+      - uses: actions/upload-artifact@v4
+        with:
+          name: passages
+          path: stitched/*
+          compression-level: 0
+          retention-days: 14
+          if-no-files-found: ignore
