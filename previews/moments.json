@@ -340,5 +340,347 @@
   "dur": 54.26,
   "label": "Movement VII full",
   "group": "VII_full"
+ },
+ {
+  "id": "II_041d",
+  "movement": "II",
+  "t": 41,
+  "warm": 10,
+  "dur": 10,
+  "label": "Icosahedral Capsid (Movement II, Cylinder)",
+  "group": "II_devices"
+ },
+ {
+  "id": "II_065d",
+  "movement": "II",
+  "t": 65,
+  "warm": 10,
+  "dur": 10,
+  "label": "Icosahedral Capsid",
+  "group": "II_devices"
+ },
+ {
+  "id": "II_111d",
+  "movement": "II",
+  "t": 111,
+  "warm": 10,
+  "dur": 10,
+  "label": "Lattice Bloom",
+  "group": "II_devices"
+ },
+ {
+  "id": "II_128d",
+  "movement": "II",
+  "t": 128,
+  "warm": 10,
+  "dur": 10,
+  "label": "Gradient + Lattice Bloom + Capsid",
+  "group": "II_devices"
+ },
+ {
+  "id": "III_008d",
+  "movement": "III",
+  "t": 8,
+  "warm": 8.5,
+  "dur": 10,
+  "label": "Wet Geometry 2",
+  "group": "III_devices"
+ },
+ {
+  "id": "III_024d",
+  "movement": "III",
+  "t": 24,
+  "warm": 10,
+  "dur": 10,
+  "label": "Radiolarian Logic + Wet Geometry 1 + Vortex Inversion",
+  "group": "III_devices"
+ },
+ {
+  "id": "III_055d",
+  "movement": "III",
+  "t": 55,
+  "warm": 10,
+  "dur": 10,
+  "label": "Nonrepeat 2 + Radiolarian Logic 3",
+  "group": "III_devices"
+ },
+ {
+  "id": "III_085d",
+  "movement": "III",
+  "t": 85,
+  "warm": 10,
+  "dur": 10,
+  "label": "Wet Geometry 3 + Wet Geometry (ch6)",
+  "group": "III_devices"
+ },
+ {
+  "id": "III_125d",
+  "movement": "III",
+  "t": 125,
+  "warm": 10,
+  "dur": 10,
+  "label": "Wet Geometry (ch6, brown-haze section)",
+  "group": "III_devices"
+ },
+ {
+  "id": "III_178d",
+  "movement": "III",
+  "t": 178,
+  "warm": 10,
+  "dur": 10,
+  "label": "Wet Geometry 4 + Nonrepeat 2",
+  "group": "III_devices"
+ },
+ {
+  "id": "III_214d",
+  "movement": "III",
+  "t": 214,
+  "warm": 10,
+  "dur": 10,
+  "label": "Vortex Inversion",
+  "group": "III_devices"
+ },
+ {
+  "id": "IV_005d",
+  "movement": "IV",
+  "t": 5,
+  "warm": 5.5,
+  "dur": 10,
+  "label": "LindenTree + Ground Shimmer",
+  "group": "IV_devices"
+ },
+ {
+  "id": "IV_040d",
+  "movement": "IV",
+  "t": 40,
+  "warm": 10,
+  "dur": 10,
+  "label": "Mycelial Net",
+  "group": "IV_devices"
+ },
+ {
+  "id": "IV_062d",
+  "movement": "IV",
+  "t": 62,
+  "warm": 10,
+  "dur": 10,
+  "label": "Arbor Bronchialis",
+  "group": "IV_devices"
+ },
+ {
+  "id": "IV_078d",
+  "movement": "IV",
+  "t": 78,
+  "warm": 10,
+  "dur": 10,
+  "label": "Neural Forest",
+  "group": "IV_devices"
+ },
+ {
+  "id": "IV_095d",
+  "movement": "IV",
+  "t": 95,
+  "warm": 10,
+  "dur": 10,
+  "label": "River Delta",
+  "group": "IV_devices"
+ },
+ {
+  "id": "IV_122d",
+  "movement": "IV",
+  "t": 122,
+  "warm": 10,
+  "dur": 10,
+  "label": "LindenTree + Ground Shimmer (2)",
+  "group": "IV_devices"
+ },
+ {
+  "id": "IV_153d",
+  "movement": "IV",
+  "t": 153,
+  "warm": 10,
+  "dur": 10,
+  "label": "LindenTree2 + LG2",
+  "group": "IV_devices"
+ },
+ {
+  "id": "IV_178d",
+  "movement": "IV",
+  "t": 178,
+  "warm": 10,
+  "dur": 10,
+  "label": "Axis Mundi + River Delta",
+  "group": "IV_devices"
+ },
+ {
+  "id": "V_018d",
+  "movement": "V",
+  "t": 18,
+  "warm": 10,
+  "dur": 10,
+  "label": "Murmuration",
+  "group": "V_devices"
+ },
+ {
+  "id": "V_042d",
+  "movement": "V",
+  "t": 42,
+  "warm": 10,
+  "dur": 10,
+  "label": "Stigmergic Trace",
+  "group": "V_devices"
+ },
+ {
+  "id": "V_056d",
+  "movement": "V",
+  "t": 56,
+  "warm": 10,
+  "dur": 10,
+  "label": "Purple Physarum",
+  "group": "V_devices"
+ },
+ {
+  "id": "V_078d",
+  "movement": "V",
+  "t": 78,
+  "warm": 10,
+  "dur": 10,
+  "label": "Peach Physarum",
+  "group": "V_devices"
+ },
+ {
+  "id": "V_114d",
+  "movement": "V",
+  "t": 114,
+  "warm": 10,
+  "dur": 10,
+  "label": "City Crystal",
+  "group": "V_devices"
+ },
+ {
+  "id": "V_143d",
+  "movement": "V",
+  "t": 143,
+  "warm": 10,
+  "dur": 10,
+  "label": "Data Topology",
+  "group": "V_devices"
+ },
+ {
+  "id": "VI_040d",
+  "movement": "VI",
+  "t": 40,
+  "warm": 10,
+  "dur": 10,
+  "label": "Accretion Disk",
+  "group": "VI_devices"
+ },
+ {
+  "id": "VI_100d",
+  "movement": "VI",
+  "t": 100,
+  "warm": 10,
+  "dur": 10,
+  "label": "Planetary Ring",
+  "group": "VI_devices"
+ },
+ {
+  "id": "VI_180d",
+  "movement": "VI",
+  "t": 180,
+  "warm": 10,
+  "dur": 10,
+  "label": "Stellar Nursery",
+  "group": "VI_devices"
+ },
+ {
+  "id": "VI_245d",
+  "movement": "VI",
+  "t": 245,
+  "warm": 10,
+  "dur": 10,
+  "label": "Supernova + Blue Stars",
+  "group": "VI_devices"
+ },
+ {
+  "id": "VI_268d",
+  "movement": "VI",
+  "t": 268,
+  "warm": 10,
+  "dur": 10,
+  "label": "Blue Stars",
+  "group": "VI_devices"
+ },
+ {
+  "id": "VI_300d",
+  "movement": "VI",
+  "t": 300,
+  "warm": 10,
+  "dur": 10,
+  "label": "Pulsar",
+  "group": "VI_devices"
+ },
+ {
+  "id": "VI_340d",
+  "movement": "VI",
+  "t": 340,
+  "warm": 10,
+  "dur": 10,
+  "label": "Stars",
+  "group": "VI_devices"
+ },
+ {
+  "id": "VII_033d",
+  "movement": "VII",
+  "t": 33,
+  "warm": 10,
+  "dur": 10,
+  "label": "Cosmic Void",
+  "group": "VII_devices"
+ },
+ {
+  "id": "VII_070d",
+  "movement": "VII",
+  "t": 70,
+  "warm": 10,
+  "dur": 10,
+  "label": "Island Universe + Pastel Stars",
+  "group": "VII_devices"
+ },
+ {
+  "id": "VII_104d",
+  "movement": "VII",
+  "t": 104,
+  "warm": 10,
+  "dur": 10,
+  "label": "Galactic Archipelago",
+  "group": "VII_devices"
+ },
+ {
+  "id": "VII_124d",
+  "movement": "VII",
+  "t": 124,
+  "warm": 10,
+  "dur": 10,
+  "label": "Filament Web",
+  "group": "VII_devices"
+ },
+ {
+  "id": "VII_175d",
+  "movement": "VII",
+  "t": 175,
+  "warm": 10,
+  "dur": 10,
+  "label": "Filament Web 2",
+  "group": "VII_devices"
+ },
+ {
+  "id": "VII_240d",
+  "movement": "VII",
+  "t": 240,
+  "warm": 10,
+  "dur": 10,
+  "label": "Filament Web + Pink Stars + Archipelago",
+  "group": "VII_devices"
  }
 ]
