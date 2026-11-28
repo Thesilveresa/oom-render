@@ -682,5 +682,77 @@
   "dur": 10,
   "label": "Filament Web + Pink Stars + Archipelago",
   "group": "VII_devices"
+ },
+ {
+  "id": "V_086v",
+  "movement": "V",
+  "t": 86,
+  "warm": 10,
+  "dur": 4,
+  "label": "City Crystal / topology stitch"
+ },
+ {
+  "id": "IV_084v",
+  "movement": "IV",
+  "t": 84,
+  "warm": 6,
+  "dur": 4,
+  "label": "Neural Forest axon"
+ },
+ {
+  "id": "V_016v",
+  "movement": "V",
+  "t": 16,
+  "warm": 14,
+  "dur": 6,
+  "label": "Murmuration haze"
+ },
+ {
+  "id": "V_032v",
+  "movement": "V",
+  "t": 32,
+  "warm": 14,
+  "dur": 4,
+  "label": "Murmuration haze 2"
+ },
+ {
+  "id": "V_044v",
+  "movement": "V",
+  "t": 44,
+  "warm": 10,
+  "dur": 4,
+  "label": "Stigmergic Trace"
+ },
+ {
+  "id": "VI_182v",
+  "movement": "VI",
+  "t": 182,
+  "warm": 10,
+  "dur": 4,
+  "label": "Stellar Nursery nebula"
+ },
+ {
+  "id": "VII_126v",
+  "movement": "VII",
+  "t": 126,
+  "warm": 10,
+  "dur": 4,
+  "label": "Filament Web"
+ },
+ {
+  "id": "VII_177v",
+  "movement": "VII",
+  "t": 177,
+  "warm": 10,
+  "dur": 4,
+  "label": "Filament Web 2"
+ },
+ {
+  "id": "VII_106v",
+  "movement": "VII",
+  "t": 106,
+  "warm": 10,
+  "dur": 4,
+  "label": "Galactic Archipelago"
  }
 ]

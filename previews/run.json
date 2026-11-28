@@ -1,89 +1,26 @@
 {
  "grid": 1800,
  "moments": [
-  "II_041d",
-  "II_065d",
-  "II_111d",
-  "II_128d",
-  "III_008d",
-  "III_024d",
-  "III_055d",
-  "III_085d",
-  "III_125d",
-  "III_178d",
-  "III_214d",
-  "IV_005d",
-  "IV_040d",
-  "IV_062d",
-  "IV_078d",
-  "IV_095d",
-  "IV_122d",
-  "IV_153d",
-  "IV_178d",
-  "V_018d",
-  "V_042d",
-  "V_056d",
-  "V_078d",
-  "V_114d",
-  "V_143d",
-  "VI_040d",
-  "VI_100d",
-  "VI_180d",
-  "VI_245d",
-  "VI_268d",
-  "VI_300d",
-  "VI_340d",
-  "VII_033d",
-  "VII_070d",
-  "VII_104d",
-  "VII_124d",
-  "VII_175d",
-  "VII_240d"
+  "V_086v",
+  "IV_084v",
+  "V_016v",
+  "V_032v",
+  "V_044v",
+  "VI_182v",
+  "VII_126v",
+  "VII_177v",
+  "VII_106v"
  ],
  "jars": [
   {
-   "name": "now",
-   "jar": "after"
-  },
-  {
-   "name": "new",
+   "name": "new23",
    "jar": "after",
    "props": "-Drb.dim=0.15 -Drb.glint=0.7 -Drb.star=0.75"
   },
   {
-   "name": "led2",
-   "jar": "after",
-   "props": "-Drb.dim=0.15 -Drb.glint=0.7 -Drb.star=0.75 -Drb.led=0.8 -Drb.ledr=0.38 -Drb.ledf=0.08"
-  },
-  {
-   "name": "led1",
-   "jar": "after",
-   "props": "-Drb.dim=0.15 -Drb.glint=0.7 -Drb.star=0.75 -Drb.led=0.5 -Drb.ledr=0.42",
-   "only": [
-    "IV_095d",
-    "V_042d",
-    "V_018d",
-    "IV_005d",
-    "VI_180d",
-    "VII_124d",
-    "III_085d",
-    "VI_300d"
-   ]
-  },
-  {
-   "name": "led3",
-   "jar": "after",
-   "props": "-Drb.glint=0.7 -Drb.star=0.75 -Drb.led=1 -Drb.ledr=0.33",
-   "only": [
-    "IV_095d",
-    "V_042d",
-    "V_018d",
-    "IV_005d",
-    "VI_180d",
-    "VII_124d",
-    "III_085d",
-    "VI_300d"
-   ]
+   "name": "new21",
+   "jar": "prev",
+   "props": "-Drb.dim=0.15 -Drb.glint=0.7 -Drb.star=0.75"
   }
  ]
 }
