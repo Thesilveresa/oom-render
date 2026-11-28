@@ -754,5 +754,53 @@
   "warm": 10,
   "dur": 4,
   "label": "Galactic Archipelago"
+ },
+ {
+  "id": "II_full",
+  "movement": "II",
+  "t": 0,
+  "warm": 0.25,
+  "dur": 160.59,
+  "label": "Movement II full (continuous)"
+ },
+ {
+  "id": "III_full",
+  "movement": "III",
+  "t": 0,
+  "warm": 0.5,
+  "dur": 224.57,
+  "label": "Movement III full (continuous)"
+ },
+ {
+  "id": "IV_full",
+  "movement": "IV",
+  "t": 0,
+  "warm": 0.5,
+  "dur": 194.89,
+  "label": "Movement IV full (continuous)"
+ },
+ {
+  "id": "V_full",
+  "movement": "V",
+  "t": 0,
+  "warm": 0.5,
+  "dur": 184.51,
+  "label": "Movement V full (continuous)"
+ },
+ {
+  "id": "VI_full",
+  "movement": "VI",
+  "t": 0,
+  "warm": 0.5,
+  "dur": 368.73,
+  "label": "Movement VI full (continuous)"
+ },
+ {
+  "id": "VII_full",
+  "movement": "VII",
+  "t": 0,
+  "warm": 0.5,
+  "dur": 271.05,
+  "label": "Movement VII full (continuous)"
  }
 ]

@@ -1,26 +1,33 @@
 {
  "grid": 1800,
  "moments": [
-  "V_086v",
-  "IV_084v",
+  "III_full",
+  "VII_full",
+  "IV_full",
+  "VI_full",
+  "II_full",
   "V_016v",
   "V_032v",
-  "V_044v",
-  "VI_182v",
-  "VII_126v",
-  "VII_177v",
-  "VII_106v"
+  "V_086v",
+  "V_018d"
  ],
  "jars": [
   {
-   "name": "new23",
+   "name": "new",
    "jar": "after",
    "props": "-Drb.dim=0.15 -Drb.glint=0.7 -Drb.star=0.75"
   },
   {
-   "name": "new21",
-   "jar": "prev",
-   "props": "-Drb.dim=0.15 -Drb.glint=0.7 -Drb.star=0.75"
+   "name": "led2",
+   "jar": "after",
+   "props": "-Drb.dim=0.15 -Drb.glint=0.7 -Drb.star=0.75 -Drb.led=0.8 -Drb.ledr=0.38 -Drb.ledf=0.08",
+   "only": [
+    "III_full",
+    "VII_full",
+    "IV_full",
+    "VI_full",
+    "II_full"
+   ]
   }
  ]
 }

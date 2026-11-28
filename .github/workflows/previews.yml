@@ -32,7 +32,7 @@ jobs:
   render:
     needs: setup
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 355
     permissions:
       contents: write
     strategy:
@@ -57,10 +57,12 @@ jobs:
           print(rec, rec-round(2*$WARM*15)/15.0, rec+2*$DUR)")
           mkdir -p out
           N="${{ matrix.job.id }}_${{ matrix.job.name }}_${G}"
-          java ${{ matrix.job.props }} -Xmx12g -jar "previews/${{ matrix.job.jar }}.jar" \
+          # safety net for full-movement jobs: stop the render before the 6 h job limit; the encoder then closes the
+          # file cleanly, so a long movement still yields a playable (if shorter) video instead of nothing
+          timeout -s KILL 340m java ${{ matrix.job.props }} -Xmx12g -jar "previews/${{ matrix.job.jar }}.jar" \
             --project project/OOM2D_Revised.lxp --automation "automation/m${M}_automation.json" \
             --start "$START" --record "$REC" --end "$END" \
-            --grid "$G" --sim 165 --size "$G" --fps 30 --crf 14 --no-skip --video "out/$N.mp4"
+            --grid "$G" --sim 165 --size "$G" --fps 30 --crf 14 --no-skip --video "out/$N.mp4" || echo "render stopped early (exit $?)"
           while pgrep -x ffmpeg >/dev/null; do sleep 2; done
           ffmpeg -v error -y -ss 1.0 -i "out/$N.mp4" -frames:v 1 "out/$N.png"
           ls -la out
